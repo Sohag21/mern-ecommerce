@@ -50,7 +50,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async(req, res)=>{
 //get all
 router.get("/", verifyToken, async(req, res)=>{
     try {
-        const carts = await Cart.finde();
+        const carts = await Cart.find();
         res.status(200).json(carts);
     } catch (error) {
         return res.status(500).json(error);

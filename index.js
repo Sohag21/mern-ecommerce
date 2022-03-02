@@ -6,8 +6,10 @@ const morgan = require("morgan");
 const app = express();
 
 const authRoute = require("./routes/auth")
-const usersRoute = require("./routes/users")
-const productsRoute = require("./routes/products")
+const userRoute = require("./routes/users")
+const productRoute = require("./routes/products")
+const cartRoute = require("./routes/cart")
+const orderRoute = require("./routes/orders") 
 
 dotenv.config();
 mongoose.connect(process.env.MONGO_URL)
@@ -23,8 +25,10 @@ app.get('/', (req, res)=>{
     res.send("Welcome to Nodejs Backend!")
 });
 app.use("/api/auth", authRoute);
-app.use("/api/users", usersRoute);
-app.use("/api/products", productsRoute);
+app.use("/api/users", userRoute);
+app.use("/api/products", productRoute);
+app.use("/api/carts", cartRoute);
+app.use("/api/orders", orderRoute);
 
 app.listen(process.env.PORT || 8800, ()=>{
     console.log("Backend Server is runnig on post:8800!");
