@@ -22,7 +22,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res)=>{
             {$set: req.body},
             {new:true}
             );
-        res.status(200).json(updateUser);
+        res.status(200).json(updatedProduct);
     } catch (error) {
         return res.status(500).json(error);
     }
@@ -65,8 +65,8 @@ router.get("/", async(req, res)=>{
         }else{
             products = await Product.find();
         };
-        
-        res.status(200).json(users);
+
+        res.status(200).json(products);
     } catch (error) {
         return res.status(500).json(error);
     }

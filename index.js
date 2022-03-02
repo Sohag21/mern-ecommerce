@@ -7,6 +7,7 @@ const app = express();
 
 const authRoute = require("./routes/auth")
 const usersRoute = require("./routes/users")
+const productsRoute = require("./routes/products")
 
 dotenv.config();
 mongoose.connect(process.env.MONGO_URL)
@@ -23,6 +24,7 @@ app.get('/', (req, res)=>{
 });
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
+app.use("/api/products", productsRoute);
 
 app.listen(process.env.PORT || 8800, ()=>{
     console.log("Backend Server is runnig on post:8800!");
