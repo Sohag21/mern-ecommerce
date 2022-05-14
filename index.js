@@ -21,6 +21,12 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.get('/', (req, res)=>{
     res.send("Welcome to Nodejs Backend!")
 });
@@ -30,6 +36,6 @@ app.use("/api/products", productRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 
-app.listen(process.env.PORT || 8800, ()=>{
-    console.log("Backend Server is runnig on post:8800!");
+app.listen(process.env.PORT || 8000, ()=>{
+    console.log("Backend Server is runnig on post:8000!");
 });
